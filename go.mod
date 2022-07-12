@@ -1,4 +1,4 @@
-module github.com/dant89/cablesolve-api-client-golang
+module github.com/dant89/golang-cablesolve-api-wrapper
 
 go 1.18
 

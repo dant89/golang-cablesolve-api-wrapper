@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/dant89/cablesolve-api-client-golang/clients/component"
-	"github.com/dant89/cablesolve-api-client-golang/clients/template"
+	"github.com/dant89/golang-cablesolve-api-wrapper/clients/component"
+	"github.com/dant89/golang-cablesolve-api-wrapper/clients/template"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/hooklift/gowsdl/soap"
