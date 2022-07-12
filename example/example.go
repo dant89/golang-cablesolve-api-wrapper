@@ -11,7 +11,8 @@ import (
 	"strconv"
 )
 
-const CableSolveHost = "" // Specify host URL
+const CableSolveHost = ""     // Specify host URL
+const CableSolveUsername = "" // Username to act as - this has to exist to avoid 500 SOAP errors
 
 func main() {
 	router := gin.Default()
@@ -81,7 +82,7 @@ func getComponentById(componentId int32) *component.Component {
 	log.Println("Loading single component.")
 	res, err := service.GetCompleteComponentByID(&component.GetCompleteComponentByID{
 		Id:       componentId,
-		Username: "dant",
+		Username: CableSolveUsername,
 	})
 	if err != nil {
 		log.Fatalf("Failed to load single component: %v", err)
@@ -97,7 +98,7 @@ func getComponentChildrenById(componentId int32) []*component.Component {
 	log.Println("Loading single component children.")
 	res, err := service.GetChildComponents(&component.GetChildComponents{
 		ComponentId: componentId,
-		Username:    "dant",
+		Username:    CableSolveUsername,
 	})
 	if err != nil {
 		log.Fatalf("Failed to load single component children: %v", err)
@@ -148,7 +149,7 @@ func getComponentsByTemplateId(c chan []*component.Component, templateId int32) 
 		TemplateId: templateId,
 	})
 	if err != nil {
-		log.Fatalf("Failed to subsection list of components with templateId: %v %v", templateId, err)
+		log.Fatalf("Failed to load subsection of components with templateId: %v %v", templateId, err)
 	}
 
 	c <- res.GetComponentsByTemplateIdResult.Component
